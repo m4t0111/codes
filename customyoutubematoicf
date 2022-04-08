@@ -1,0 +1,125 @@
+// ==UserScript==
+// @name          Custom Youtube @matoi.cf
+// @description	   Eigener Hintergrund und transparente Objekte:3
+// @author        matoi.cf
+// @run-at        document-start
+// @version       0.20211028160427
+//@icon  https://i.gifer.com/embedded/download/BHXl.gif
+// ==/UserScript==
+(function() {var css = "";
+if (false || (document.domain == "youtube" || document.domain.substring(document.domain.indexOf(".youtube") + 1) == "youtube"))
+	css += [
+
+	].join("\n");
+if (false || (new RegExp("^https?://www.youtube.com?/(?!my_videos|ad_companion|subscribe_embed|account|yt|red).*$")).test(document.location.href))
+	css += [
+		"html:not(#⁠),body>div,body>table,[role=\"navigation\"],[role=\"dialog\"],#body-container>div,[aria-expanded=\"true\"]:not(.ytp-button),[class*=\"tooltip\"]:not(.ytp-tooltip-duration):not(.ytp-tooltip-bg):not(.ytp-tooltip-text-wrapper):not([class*=\"arrow\"]):not(button),[role=\"menu\"],.ytp-popup,.videoAdUiPreSkipButton,.videoAdUiAdInfoPopup",
+		"  {",
+		"    background: url(https://64.media.tumblr.com/f7e0bd92822ced12e4077447beb544ed/96904bf57824fe53-02/s500x750/48cde1af47529cde01692c387763b54d570a3b4a.gifv)fixed #000!important;",
+		"    background-size: cover!important;",
+		"  }",
+		"/*search bar*/  #masthead-search-terms,form.channels-search:not(#​)",
+		"  {",
+		"    border: 1px solid #FFF!important;",
+		"  }",
+		"",
+		"  #masthead-search-terms.gsfe_a",
+		"  {",
+		"    border: 1px solid #A0A0A0!important;",
+		"  }",
+		"",
+		"  #masthead-search-terms.gsfe_b",
+		"  {",
+		"    border: 1px solid #4D90FE!important;",
+		"  }",
+		"",
+		"  :not(textarea):not(input):not([contenteditable])",
+		"  {",
+		"    text-shadow: 0 0.05em rgba(0,0,0,.5),0 -0.05em rgba(0,0,0,.5),0.05em 0 rgba(0,0,0,.5),-0.05em 0 rgba(0,0,0,.5)!important;",
+		"  }",
+		"",
+		"  :not([class*=\"video-extras-sparkbar\"]):not([class^=\"ytp-\"]):not(.sidebar):not(.video-time):not([class^=\"html5-\"]):not(.yt-uix-button-primary):not(label):not(.toggle):not(.branding-context-container-inner):not(.iv-drawer)",
+		"  {",
+		"    background-color: transparent!important;",
+		"    color: #FFFFFF!important;",
+		"  }",
+		"",
+		"  .load-more-button",
+		"  {",
+		"    background: transparent!important;",
+		"  }",
+		"",
+		"  [role=\"alert\"],.content-region,.yt-uix-checkbox-on-off .checked:before",
+		"  {",
+		"    display: none!important;",
+		"  }",
+		"",
+		"  :not(#​) :link",
+		"  {",
+		"    color: #99CCFF!important;",
+		"  }",
+		"",
+		"  :not(#​) :visited",
+		"  {",
+		"    color: #CC99FF!important;",
+		"  }",
+		"",
+		"  :not(#​) select",
+		"  {",
+		"    background: black!important;",
+		"  }",
+		"",
+		"  [href=\"/\"][id*=\"logo\"],:not(.ytp-volume-slider-handle):not(.yt-uix-playlistlike):before,.yt-uix-button-icon-material-upload,.yt-uix-button-icon-bell,.yt-uix-button-icon-wrapper>.yt-sprite,.autoplay-info-icon,.search-button>.yt-uix-button-content,#appbar-guide-button .yt-uix-button-icon-wrapper,.yt-uix-button-shelf-slider-pager",
+		"  {",
+		"    -webkit-filter: invert(1)hue-rotate(180deg);",
+		"    filter: invert(1)hue-rotate(180deg);",
+		"  }",
+		"",
+		"  .yt-uix-form-input-select,[class$=\"container\"],#yt-comments-paginator",
+		"  {",
+		"    background-image: none!important;",
+		"  }",
+		"",
+		"  :not(h2):not(button):not(.comment-simplebox-renderer-collapsed-content),#footer-container button,.yt-uix-button-shelf-slider-pager",
+		"  {",
+		"    border: none!important;",
+		"  }",
+		"",
+		"  textarea,[contenteditable=\"true\"],[type=\"text\"]:not(#masthead-search-term),[role=\"menu\"]:not(.guide-user-links):not(.ytp-panel-menu),#footer-container .yt-uix-button-default,.yt-uix-clickcard-card-visible,#watch-appbar-playlist,.comment-simplebox-frame,body>table",
+		"  {",
+		"    box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,.5)!important;",
+		"  }",
+		"",
+		"  #masthead-search-terms",
+		"  {",
+		"    box-shadow: none!important;",
+		"  }"
+	].join("\n");
+if (false || (new RegExp("^https://c.tenor.com/YdROcIDBlWAAAAAd/gif-wallpaper.gif$")).test(document.location.href))
+	css += [
+		"*",
+		"  {",
+		"    background-color: #000!important;",
+		"    color: #fff!important;",
+		"    border-color: #000!important;",
+		"  }"
+	].join("\n");
+if (typeof GM_addStyle != "undefined") {
+	GM_addStyle(css);
+} else if (typeof PRO_addStyle != "undefined") {
+	PRO_addStyle(css);
+} else if (typeof addStyle != "undefined") {
+	addStyle(css);
+} else {
+	var node = document.createElement("style");
+	node.type = "text/css";
+	node.appendChild(document.createTextNode(css));
+	var heads = document.getElementsByTagName("head");
+	if (heads.length > 0) {
+		heads[0].appendChild(node);
+	} else {
+		// no head yet, stick it whereever
+		document.documentElement.appendChild(node);
+	}
+}
+})();
